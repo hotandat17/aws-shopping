@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .product-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            width: 300px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        .product-card h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .product-card p {
+            margin: 5px 0;
+        }
+
+        .product-card ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        .product-card ul li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Product Details</h1>
+    <div id="product-list" class="product-list"></div>
+
+    <script src="script.js"></script>
+    <script>
+        const ProductDetail = [
+            // Danh sách sản phẩm iPhone (tương tự như đã nêu trong ví dụ)
+        ];
+
+        const WatchDetail = [
+            // Danh sách sản phẩm đồng hồ (tương tự như đã nêu trong ví dụ)
+        ];
+
+        const LaptopDetail = [
+            // Danh sách sản phẩm laptop (tương tự như đã nêu trong ví dụ)
+        ];
+
+        const productListContainer = document.getElementById("product-list");
+
+        // Hàm để hiển thị danh sách sản phẩm
+        function displayProducts(productList) {
+            productList.forEach(product => {
+                const productCard = document.createElement("div");
+                productCard.classList.add("product-card");
+
+                productCard.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p><strong>Price:</strong> ${product.price}</p>
+      <p><strong>Status:</strong> ${product.status}</p>
+      <p><strong>Sold by:</strong> ${product.soldby || "N/A"}</p>
+      <p><strong>Delivery:</strong> ${product.delivery}</p>
+      <ul>
+        ${product.about.map(item => `<li>${item}</li>`).join("")}
+      </ul>
+    `;
+
+                productListContainer.appendChild(productCard);
+            });
+        }
+
+        // Hiển thị từng danh sách
+        displayProducts(ProductDetail);
+        displayProducts(WatchDetail);
+        displayProducts(LaptopDetail);
+
+    </script>
+</body>
+
+</html>
